@@ -6,17 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>event | 孟倩博客</title>
+  <title>jQuery 基础 | 孟倩博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="鼠标事件对象  产生：绑定事件对应的那个函数中，并且可以作为参数传递 ps：标准浏览器中事件对象e存在于绑定的函数中，在ie低版本中事件对象在window的event属性上==》e = e || window.event; clientX：鼠标点击位置相对于窗口的x轴的坐标； clientY：鼠标点击位置相对于窗口的y轴的坐标； pageX：鼠标位置相对于页面的X轴； pageY：鼠标位置相对于">
+<meta name="keywords" content="事件">
 <meta property="og:type" content="article">
-<meta property="og:title" content="event">
+<meta property="og:title" content="jQuery 基础">
 <meta property="og:url" content="http://yoursite.com/2017/06/19/event/index.html">
 <meta property="og:site_name" content="孟倩博客">
 <meta property="og:description" content="鼠标事件对象  产生：绑定事件对应的那个函数中，并且可以作为参数传递 ps：标准浏览器中事件对象e存在于绑定的函数中，在ie低版本中事件对象在window的event属性上==》e = e || window.event; clientX：鼠标点击位置相对于窗口的x轴的坐标； clientY：鼠标点击位置相对于窗口的y轴的坐标； pageX：鼠标位置相对于页面的X轴； pageY：鼠标位置相对于">
-<meta property="og:updated_time" content="2017-06-19T05:19:38.798Z">
+<meta property="og:updated_time" content="2017-06-19T05:31:06.048Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="event">
+<meta name="twitter:title" content="jQuery 基础">
 <meta name="twitter:description" content="鼠标事件对象  产生：绑定事件对应的那个函数中，并且可以作为参数传递 ps：标准浏览器中事件对象e存在于绑定的函数中，在ie低版本中事件对象在window的event属性上==》e = e || window.event; clientX：鼠标点击位置相对于窗口的x轴的坐标； clientY：鼠标点击位置相对于窗口的y轴的坐标； pageX：鼠标位置相对于页面的X轴； pageY：鼠标位置相对于">
   
     <link rel="alternative" href="/atom.xml" title="孟倩博客" type="application/atom+xml">
@@ -160,13 +161,13 @@
         
   
     <h1 class="article-title" itemprop="name">
-      event
+      jQuery 基础
     </h1>
   
 
         
         <a href="/2017/06/19/event/" class="archive-article-date">
-  	<time datetime="2017-06-19T05:17:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-19</time>
+  	<time datetime="2017-06-19T05:31:05.799Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-19</time>
 </a>
         
       </header>
@@ -181,15 +182,50 @@
 <li>clientX：鼠标点击位置相对于窗口的x轴的坐标；</li>
 <li>clientY：鼠标点击位置相对于窗口的y轴的坐标；</li>
 <li>pageX：鼠标位置相对于页面的X轴；</li>
-<li>pageY：鼠标位置相对于页面Y轴；<br><strong>e.page 的兼容处理：</strong><pre><code>e.pageX = e.pageX || e.clientX + (document.documentElement.scrollLeft || document.body.scrollLeft);
-e.pageY = e.pageY || e.clientY + (document.documentElement.scrollTop || document.body.scrollTop);
-</code></pre></li>
-<li><strong>阻止默认行为：</strong><br>  preventDefault(); 标准浏览器<br>  e.returnValue = false; ie低版本<br>  兼容处理：<br>  e.preventDefault?preventDefault（）:e.returnValue = false;<br>  return false；也能处理阻止默认行为<br>  默认行为：a的默认跳转</li>
-<li><strong>e.type：</strong>当前事件类型 ‘click/mouseover/mouseout’</li>
-<li><strong>事件冒泡</strong>：点击当前元素会触发所有祖先元素的对应事件。</li>
-<li>e.target：事件源=&gt;真正事件发生的那个元素<br>兼容处理：e.target = e.target || e.srcElement;</li>
-<li>e.stopPropagation(); //阻止事件传播<br>兼容处理：<br>e.stopPropagation()?e.stopPropagation:e.cancelBubble =true;</li>
+<li>pageY：鼠标位置相对于页面Y轴；</li>
+<li><strong>e.page 的兼容处理：</strong></li>
 </ul>
+</blockquote>
+<pre><code>e.pageX = e.pageX || e.clientX + (document.documentElement.scrollLeft || document.body.scrollLeft);
+e.pageY = e.pageY || e.clientY + (document.documentElement.scrollTop || document.body.scrollTop);
+</code></pre><blockquote>
+<ul>
+<li><strong>阻止默认行为：</strong></li>
+</ul>
+</blockquote>
+<pre><code>preventDefault(); 标准浏览器
+e.returnValue = false; ie低版本
+兼容处理：
+e.preventDefault?preventDefault（）:e.returnValue = false;
+return false；也能处理阻止默认行为
+默认行为：a的默认跳转
+</code></pre><blockquote>
+<ul>
+<li><strong>e.type：</strong></li>
+</ul>
+</blockquote>
+<p>当前事件类型 ‘click/mouseover/mouseout’</p>
+<blockquote>
+<ul>
+<li><strong>事件冒泡</strong>：</li>
+</ul>
+</blockquote>
+<p>点击当前元素会触发所有祖先元素的对应事件。</p>
+<blockquote>
+<ul>
+<li>e.target：</li>
+</ul>
+</blockquote>
+<p>事件源=&gt;真正事件发生的那个元素</p>
+<blockquote>
+<p>兼容处理：</p>
+</blockquote>
+<p>e.target = e.target || e.srcElement;</p>
+<blockquote>
+<ul>
+<li>e.stopPropagation(); //阻止事件传播</li>
+</ul>
+<p>兼容处理：<br>e.stopPropagation()?e.stopPropagation:e.cancelBubble =true;</p>
 </blockquote>
 <pre><code>document.onclick = function (){
     e = e || window.event;
@@ -201,7 +237,10 @@ if(e.target.nodeName == &apos;DIV&apos; &amp;&amp; e.target.className == &apos;d
 </code></pre><blockquote>
 <p>键盘事件</p>
 <ul>
-<li>e.keycode：按键编码<pre><code>Enter ：13   
+<li>e.keycode：按键编码</li>
+</ul>
+</blockquote>
+<pre><code>Enter ：13   
 Space：32
 backspace：8
 left：37
@@ -209,8 +248,9 @@ top：38
 right：39
 bottom：40
 0-9：48-57 //不是小键盘的数字
-</code></pre></li>
-<li>key：按键 “j”。。。</li>
+</code></pre><blockquote>
+<ul>
+<li>key:</li>
 </ul>
 </blockquote>
 <pre><code>var input = document.getElementById(&apos;input&apos;);
@@ -343,6 +383,17 @@ function run(e) {
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">事件</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -407,11 +458,15 @@ function run(e) {
   
 <nav id="article-nav">
   
-  
-    <a href="/2017/06/19/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">jQuery 基础</div>
-      <i class="icon-circle-right"></i>
+    <a href="/2017/06/19/jquery/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          jQuery 基础
+        
+      </div>
     </a>
+  
   
 </nav>
 
@@ -515,6 +570,14 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">事件</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>

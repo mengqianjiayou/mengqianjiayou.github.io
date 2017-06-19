@@ -6,18 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>jQuery 基础 | 孟倩博客</title>
+  <title>Tag: jquery | 孟倩博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="####- 选择器 使用jQuery获取元素返回的是一个jQuery对象。才能够调用jQuery原型上的方法    id：#id    class：.class    tag：tag    如何把jQ对象转化为一个原生dom对象  ==》通过索引值来获取    var $res4 = $(&amp;apos;#div1 p&amp;apos;)[0]     var $res4 = $(&amp;apos;#div1 p">
-<meta property="og:type" content="article">
-<meta property="og:title" content="jQuery 基础">
-<meta property="og:url" content="http://yoursite.com/2017/06/19/hello-world/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="孟倩博客">
+<meta property="og:url" content="http://yoursite.com/tags/jquery/index.html">
 <meta property="og:site_name" content="孟倩博客">
-<meta property="og:description" content="####- 选择器 使用jQuery获取元素返回的是一个jQuery对象。才能够调用jQuery原型上的方法    id：#id    class：.class    tag：tag    如何把jQ对象转化为一个原生dom对象  ==》通过索引值来获取    var $res4 = $(&amp;apos;#div1 p&amp;apos;)[0]     var $res4 = $(&amp;apos;#div1 p">
-<meta property="og:updated_time" content="2017-06-19T04:38:03.785Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jQuery 基础">
-<meta name="twitter:description" content="####- 选择器 使用jQuery获取元素返回的是一个jQuery对象。才能够调用jQuery原型上的方法    id：#id    class：.class    tag：tag    如何把jQ对象转化为一个原生dom对象  ==》通过索引值来获取    var $res4 = $(&amp;apos;#div1 p&amp;apos;)[0]     var $res4 = $(&amp;apos;#div1 p">
+<meta name="twitter:title" content="孟倩博客">
   
     <link rel="alternative" href="/atom.xml" title="孟倩博客" type="application/atom+xml">
   
@@ -153,323 +149,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hello-world" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      jQuery 基础
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/06/19/jquery/" class="archive-article-date">
+  	<time datetime="2017-06-19T05:31:06.153Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-19</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/06/19/jquery/">jQuery 基础</a>
     </h1>
   
 
-        
-        <a href="/2017/06/19/hello-world/" class="archive-article-date">
-  	<time datetime="2017-06-19T04:38:03.780Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>####- 选择器</p>
-<pre><code>使用jQuery获取元素返回的是一个jQuery对象。才能够调用jQuery原型上的方法
-   id：#id
-   class：.class
-   tag：tag
-   如何把jQ对象转化为一个原生dom对象  ==》通过索引值来获取
-   var $res4 = $(&apos;#div1 p&apos;)[0] 
-   var $res4 = $(&apos;#div1 p&apos;).get(index);
-</code></pre><blockquote>
-<p>基本选择器</p>
-</blockquote>
-<pre><code>var $res = $(&apos;#div1&apos;);
-var $res2 = $(&apos;.div&apos;);
-var $res3 = $(&apos;div&apos;);
-</code></pre><blockquote>
-<p>层级选择器</p>
-</blockquote>
-<pre><code>var $res4 = $(&apos;#div1 p&apos;);//获取div1下所有的p元素
-var $res5 = $(&apos;#div1 *&apos;);//获取div1下所有元素
-var $res6 = $(&apos;#div1，#div2&apos;);//同时获取多个元素
-var $res7 = $(&apos;#div1 p+&apos;);//获取的是p元素的弟弟元素
-var $res8 = $(&apos;#div1 p~&apos;);//获取p元素所有的弟弟
-</code></pre><blockquote>
-<p>筛选</p>
-</blockquote>
-<pre><code>var $res = $(&apos;#div1 p:first&apos;);//第一个p元素
-var $res = $(&apos;#div1 p:last&apos;);//最后一个元素
-var $res = $(&apos;#div1 span:not(.span3)&apos;); // 除了.span3类的其他
-var $res = $(&apos;#div1 span:odd&apos;); // 索引为奇数的元素
-var $res = $(&apos;#div1 span:even&apos;); // 索引为偶数的元素
-var $res = $(&apos;#div1 span:eq(0)&apos;); // 索引等于
-var $res = $(&apos;#div1 span:gt(0)&apos;); // 大于索引值
-var $res = $(&apos;#div1 span:lt(0)&apos;); // 小于索引值
-</code></pre><blockquote>
-<p>内容过滤</p>
-</blockquote>
-<pre><code>var $res = $(&apos;#div1 span:contains(珠)&apos;); // 获取内容包含具体某个字的
-var $res = $(&apos;#div1 span:empty&apos;); // 获取内容为空的
-var $res = $(&apos;#div1 span:has(.a)&apos;);//获取所有span中包含一个.a的span
-</code></pre><blockquote>
-<p>表单元素属性过滤</p>
-</blockquote>
-<pre><code>var $res = $(&apos;input:text&apos;); // 属性过滤
-var $res = $(&apos;input:radio&apos;); // 属性过滤
-var $res = $(&apos;input[type=checkbox][name=b]&apos;); // input:checkbox
-var $res = $(&apos;div[xx=abc]&apos;);
-var $res = $(&apos;input:checked&apos;);
-var $res = $(&apos;input:disabled&apos;);
-</code></pre><blockquote>
-<p>筛选方法</p>
-</blockquote>
-<pre><code>$(&apos;#div1&apos;).hasClass(&apos;div&apos;); 
-// 返回一个布尔值，#div1是否包含div这个class =&gt; 作为一个判断的条件
-$(&apos;#div1&apos;).children(&apos;.c1&apos;); 
-// 获取div1内所有元素子节点中包含.c1这个类样式的
-$(&apos;#div1&apos;).parent(); // 获取div1的父元素
-$(&apos;#div1&apos;).siblings(); // 获取所有的兄弟节点
-$(&apos;#div1&apos;).prev(); // 获取哥哥节点
-$(&apos;#div1&apos;).next(); // 获取弟弟节点
-$(&apos;#div1&apos;).nextAll(); // 所有弟弟
-$(&apos;#div1&apos;).prevAll(); // 所有哥哥
-</code></pre><blockquote>
-<p>filter find closest</p>
-</blockquote>
-<pre><code>find : 先获取一个父元素,然后在这个范围内继续获取一般采用find方法
-$div1.find(&apos;p&apos;);
-$div1.find(&apos;span&apos;);
-closest : 在所有祖先元素中获取和当前最近的哪一个
-var $res = $div1.closest(&apos;.c1&apos;);
-filter : 属性过滤
-var $res = $div1.find(&apos;span&apos;).filter(&apos;[a=b][price=&apos;+ price +&apos;]&apos;);
-</code></pre><blockquote>
-<p>end() 返回到开头</p>
-<p>####-文档操作</p>
-</blockquote>
-<pre><code>创建元素：
-var $p = $(&apos;&lt;p&gt;&lt;/p&gt;&apos;); 
-append：父元素添加子元素-------------------$div1.append($p);
-appendTo：子元素添加到父元素中---------$span.appendTo($div1); 
-prepend：添加到开头----------------------div1.prepend($h3);
-insertBefore：把A添加到B的前面-------- $(A).insertBefore(B);
-insertAfter：把A添加到B的后面-----------$(A).insertAfter(B);
-after, before：在前面/后面添加元素--- $div1.after(&apos;&lt;i&gt;&lt;/i&gt;&apos;); 
-warp unwarp：给div1添加一个包裹元素- $div1.wrap(&apos;&lt;h2&gt;&lt;/h2&gt;&apos;);
-remove：移除元素----------------------------$div1.remove(); 
-replaceWidth replaceAll 替换
-</code></pre><p>####-属性方法</p>
-<pre><code>jq对象----$(&apos;#div1&apos;);
-dom对象转换成jq对象----$(dom)；
-html(): 如果有参数就是来设置html的值，如果没有参数获取html;
-text(): 如果有就是设置，没有获取;
-attr(): 两个参数是设置，一个参数获取--$(div1).attr(&apos;school&apos;,&apos;zf&apos;);
-prop:尤其是表单元素的checked等布尔操作必须要用这个方法,如果是原生可以使用prop，自定义属性attr
-prop : 如果是两个参数就是设置，一个参数就是获取 ,可以用prop(&apos;checked&apos;)去判定是否是选中状态
-addClass 添加类
-removeClass 移除类
-toggleClass 如果有这个类就删除，没有就增加
-val : 一般用于表单元素，如果有参数就是设置，否则获取value
-</code></pre><blockquote>
-<p>css方法：</p>
-</blockquote>
-<pre><code>$(&apos;#div1&apos;).css({
-    width : 200,
-    height : 200,
-    opacity : .7
-}).scrollTop(200).css(&apos;width&apos;,400);
-盒子模型 : 
-offset() innerWidth() innerHeight() scrollTop() scrollLeft()
-offset()获取相对于body的偏移量
-innerWidth()相当于 clientWidth
-</code></pre><p>####-事件</p>
-<pre><code>jq对象.click(function);
-jq对象.mouseover(function);
-链式写法:
-$(&apos;#div1&apos;).css({
-    width : 100,
-    height : 100,
-    background : &apos;red&apos;,
-    position : &apos;absolute&apos;,
-    left : 0,
-    top : 0
-}).click(function (){
-    //$(this).css(&apos;width&apos;,200);
-}).mouseover(function (){
-    console.log(&apos;mouseover&apos;);
-}).mouseout(function (){
-});
-</code></pre><p> on  jq绑定事件, 同一个事件可以绑定多个函数,如果使用on方法绑定事件，那么当需要移除事件的时候那么绑定实名函数。<br> off 移除事件 : 如果移除那么需要指定具体的函数，否则就是把所有的全部移除掉。</p>
-<pre><code> var fn1 = function (){
-    console.log(1);
-}
-$(&apos;#div1&apos;).on(&apos;click&apos;,fn1).on(&apos;click&apos;,function (){
-    console.log(2);
-}).on(&apos;mouseover&apos;,function (){
-    console.log(this);
-}).off(&apos;click&apos;,fn1);
-</code></pre><p>动画</p>
-<pre><code>animate方法 :
-$(div).animate({},300,&apos;linear&apos;,function (){})
-param 1 : 终点 对象  {width : 200, opacity : 1}
-param 2 : 完成时间  duration
-param 3 : 效果 默认linear匀速
-param 4 : 回调 =&gt; 动画完成之后要做什么...
- ps : 在调用animate方法之前我们可以先stop(),防止动画累积问题
-</code></pre><p>ajax</p>
-<pre><code>$.ajax({
-    type : &apos;get/post&apos;,
-    url : &apos;data.txt&apos;,
-    async : false/true,
-    cache : false/true,
-    dataType : &apos;json&apos;,
-    data : {sex : 1, age: 30}, //传递给后台的参数
-    success : function (result){
-        // result就是我要获取的数据
-    },
-    error : function (){
-        // 404  window.location.href...
-    }
-});
-</code></pre><p>工具方法：</p>
-<pre><code>$.toArray()
-$.isArray; // 判断是否是数组
-$.isPlainObject; // 判断是否是{}的对象
-$.isEmptyObject; //
-$.trim(&apos; a  &apos;); // 去首尾空格
-$.makeArray(); // listToArray
-$.each(ary,function (index,item){
-       //遍历
-});
- each :
-$.each 
-定义在jQuery.each 定义在$本身上的 =&gt; 遍历数组等集合
-$(&apos;div&apos;).each 
-定义在jQuery.prototype上的 =&gt; 直接遍历获取回来jq对象用的 =&gt; 总结 :  jq定义方法，一个是在自己本身添加属性，另外一个在prototype原型上添加属性, 例如css、html等方法依赖jq元素对象的定义在原型上，ajax、each等不以来元素的定义在本身上。
-</code></pre><p>jq拓展：</p>
-<pre><code>$.extend({   =&gt; 拓展在jq本身
-  fn : function(){}
-})
-$.fn.extend({ =&gt; 拓展在原型上的
-      fn : function (){}
-  })
-</code></pre>
-      
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jquery</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
+          
+
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/06/19/hello-world/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/06/19/event/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          event
-        
-      </div>
-    </a>
   
   
-</nav>
-
-
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
+    
 
 
           </div>
@@ -492,9 +225,9 @@ $.fn.extend({ =&gt; 拓展在原型上的
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
@@ -559,6 +292,14 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jquery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">事件</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
