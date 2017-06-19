@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>闭包 | 孟倩博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="###闭包闭包：当函数执行的时候，就会形成一个私有作用域（栈），这个私有作用域保护私有变量不受外界干扰的这种机制叫做闭包。 function fn(){     var num = 10;     a=50；     window.y=10;//多了一个叫做y的全局变量，值为10； } fn(); console.log(a);//---50；如果是一个赋值过程，最不济也能赋值成全局变量，如果是取">
+  <meta name="description" content="###闭包闭包：当函数执行的时候，就会形成一个私有作用域（栈），这个私有作用域保护私有变量不受外界干扰的这种机制叫做闭包。 function fn(){     var num = 10;     a=50；     window.y=10;//多了一个叫做y的全局变量，值为10； } fn();">
 <meta property="og:type" content="article">
 <meta property="og:title" content="闭包">
 <meta property="og:url" content="http://yoursite.com/2017/06/19/闭包/index.html">
 <meta property="og:site_name" content="孟倩博客">
-<meta property="og:description" content="###闭包闭包：当函数执行的时候，就会形成一个私有作用域（栈），这个私有作用域保护私有变量不受外界干扰的这种机制叫做闭包。 function fn(){     var num = 10;     a=50；     window.y=10;//多了一个叫做y的全局变量，值为10； } fn(); console.log(a);//---50；如果是一个赋值过程，最不济也能赋值成全局变量，如果是取">
-<meta property="og:updated_time" content="2017-06-19T12:28:20.257Z">
+<meta property="og:description" content="###闭包闭包：当函数执行的时候，就会形成一个私有作用域（栈），这个私有作用域保护私有变量不受外界干扰的这种机制叫做闭包。 function fn(){     var num = 10;     a=50；     window.y=10;//多了一个叫做y的全局变量，值为10； } fn();">
+<meta property="og:updated_time" content="2017-06-19T12:31:53.136Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="闭包">
-<meta name="twitter:description" content="###闭包闭包：当函数执行的时候，就会形成一个私有作用域（栈），这个私有作用域保护私有变量不受外界干扰的这种机制叫做闭包。 function fn(){     var num = 10;     a=50；     window.y=10;//多了一个叫做y的全局变量，值为10； } fn(); console.log(a);//---50；如果是一个赋值过程，最不济也能赋值成全局变量，如果是取">
+<meta name="twitter:description" content="###闭包闭包：当函数执行的时候，就会形成一个私有作用域（栈），这个私有作用域保护私有变量不受外界干扰的这种机制叫做闭包。 function fn(){     var num = 10;     a=50；     window.y=10;//多了一个叫做y的全局变量，值为10； } fn();">
   
     <link rel="alternative" href="/atom.xml" title="孟倩博客" type="application/atom+xml">
   
@@ -180,7 +180,8 @@
     window.y=10;//多了一个叫做y的全局变量，值为10；
 }
 fn();
-console.log(a);//---50；如果是一个赋值过程，最不济也能赋值成全局变量，如果是取值过程，到全局变量还没有获取到就报错。
+</code></pre>   <a id="more"></a>
+<pre><code>console.log(a);//---50；如果是一个赋值过程，最不济也能赋值成全局变量，如果是取值过程，到全局变量还没有获取到就报错。
 所有的全局变量都可以认为是window的一个属性。
     //fn执行的时候形成了一个私有作用域，并且这个作用域把var num=10，保护起来，形成了一个闭包==》闭包形成的前提是有函数执行。
 </code></pre><hr>
@@ -357,6 +358,15 @@ fun()();
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/06/19/jquery/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          jQuery 基础
+        
+      </div>
+    </a>
   
   
     <a href="/2017/06/19/JavaScript中的继承方法/" id="article-nav-older" class="article-nav-link-wrap">

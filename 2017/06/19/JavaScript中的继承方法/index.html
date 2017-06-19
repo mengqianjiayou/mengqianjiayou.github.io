@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/06/19/JavaScript中的继承方法/index.html">
 <meta property="og:site_name" content="孟倩博客">
 <meta property="og:description" content="####继承  类式继承是在子类型构造函数的内部调用超类型的构造函数。  function C(){     this.x=100,     this.y=200 } C.prototype.getX=function(){       console.log(&amp;quot;x&amp;quot;) } function D(){     C.call(this); //把C中的this改成D的实例； }">
-<meta property="og:updated_time" content="2017-06-19T12:26:17.999Z">
+<meta property="og:updated_time" content="2017-06-19T12:31:52.916Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript中的继承方法">
 <meta name="twitter:description" content="####继承  类式继承是在子类型构造函数的内部调用超类型的构造函数。  function C(){     this.x=100,     this.y=200 } C.prototype.getX=function(){       console.log(&amp;quot;x&amp;quot;) } function D(){     C.call(this); //把C中的this改成D的实例； }">
@@ -189,6 +189,7 @@ function D(){
 }
 var d= new D();
 console.dir(d) //打印x =100; y = 200;
+&lt;!--more--&gt;
 </code></pre><blockquote>
 <p>原型链继承</p>
 </blockquote>

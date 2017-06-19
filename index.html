@@ -151,6 +151,78 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-jquery" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/19/jquery/">jQuery 基础</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/19/jquery/" class="archive-article-date">
+  	<time datetime="2017-06-19T12:31:52.999Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>####- 选择器</p>
+<pre><code>使用jQuery获取元素返回的是一个jQuery对象。才能够调用jQuery原型上的方法
+   id：#id
+   class：.class
+   tag：tag
+   如何把jQ对象转化为一个原生dom对象  ==》通过索引值来获取
+   var $res4 = $(&apos;#div1 p&apos;)[0] 
+   var $res4 = $(&apos;#div1 p&apos;).get(index);
+
+   &lt;!--more--&gt;
+</code></pre><blockquote>
+<p>基本选择器<br>
+        
+          <a class="article-more-a" href="/2017/06/19/jquery/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jquery</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/19/jquery/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-闭包" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -178,92 +250,10 @@
     window.y=10;//多了一个叫做y的全局变量，值为10；
 }
 fn();
-console.log(a);//---50；如果是一个赋值过程，最不济也能赋值成全局变量，如果是取值过程，到全局变量还没有获取到就报错。
-所有的全局变量都可以认为是window的一个属性。
-    //fn执行的时候形成了一个私有作用域，并且这个作用域把var num=10，保护起来，形成了一个闭包==》闭包形成的前提是有函数执行。
-</code></pre><hr>
-<pre><code>var total=1200;
-function foo(){
-    var total= 120;
-    return function (){
-        var total =12;
-        console.log(total);
-    }
-}
-foo()
-</code></pre><p>#####二、堆栈内存的释放<br>只要这个内存还在被占用，那么就不能被释放。</p>
-<pre><code>堆内存释放：
-var obj={//obj就在占用这个对象的堆内存地址，所以这个堆不能释放
-    name:&apos;mengqian&apos;,
-    age:24
-};
-obj=null；//obj这个变量再也不占用的对象的堆内存地址。
-</code></pre><blockquote>
-<p><strong>栈内存不被释放的条件：</strong></p>
-</blockquote>
-<ul>
-<li>函数执行的时候（fn），会形成一个私有作用域，如果这个函数（fn）中的一部分（必须是引用数据类型值return后面的函数）被函数外（fn外）变量（f）或者对象的属性占用，那么fn执行形成的作用域就符合不被释放的条件。<strong>从而在这个作用域内的私有变量（total=120）甚至形参都能保存下来。</strong> </li>
-</ul>
-<blockquote>
-<p>1)全局变量f占用return出来的匿名函数，符合fn执行形成的作用域不被释放的条件。</p>
-</blockquote>
-<pre><code>栈(作用域)释放：
-var total=1200；
-function fn(){
-    var total =120;
-    return function (){
-        var total=12；
-        console.log(total);
-    }
-}
-var f = fn();//全局变量f占用着fn函数执行结果。
-document.body.xxx=fn();
-f();
-</code></pre><blockquote>
-<p>2)如果不return出来，那么可以到函数内部去占用这个返回值。</p>
-</blockquote>
-<pre><code>function fxx(){
-    var xx=1000;
-    function fyy(){
-
-    }
-    window.fyy=fyy;
-}
-fxx();
-</code></pre><blockquote>
-<p>3)在绑定事件过程中，也有可能和作用域不释放掺和到一起。</p>
-</blockquote>
-<pre><code>function fzz(){
-    var cont =0;
-    function zz(){
-        cont ++;
-        console.log(cont);
-    }
-    div1.onclick =zz;//div1的onclick的属性占用fzz函数的zz函数，fzz函数执行的时候形成的作用域不被释放。===》cont值就被保留下来。
-}
-fzz();
-div1.onclick();//----1,主动触发这个事件，
-点击的时候可以继续往下执行。
-</code></pre><p>补充： i++和++i<br>1、i++ 和 ++i 没有和其他值做运算效果是一样的，是自身累加1。<br>2、i++是先运算后累加，++i 是先累加后运算。<br>++i有强制转化为数字的默认行为</p>
-<blockquote>
-<p>4)不立刻释放作用域</p>
-</blockquote>
-<pre><code>function fun(){
-    var i=0;
-    return function(){
-        console.log(++i);
-    }
-}
-fun()();
-</code></pre><p>#####引用数据类型赋值过程</p>
-<blockquote>
-<ul>
-<li>浏览器先去开辟一块堆内存</li>
-<li>如果是对象那么就把键值对当字符串存入到这个内存中，如果是函数那么就把函数体内的代码当作字符串存入到内存中</li>
-<li>最后把这个地址返回<br><strong>注意！！！赋值过程中不能使用当前变量</strong></li>
-</ul>
-</blockquote>
-
+</code></pre>
+        
+          <a class="article-more-a" href="/2017/06/19/闭包/#more">more >></a>
+        
       
 
       
@@ -326,6 +316,7 @@ function D(){
 }
 var d= new D();
 console.dir(d) //打印x =100; y = 200;
+&lt;!--more--&gt;
 </code></pre><blockquote>
 <p>原型链继承</p>
 </blockquote>
@@ -443,25 +434,10 @@ alert(b2.arr);//brother,sister,baba,parents
         <p>####call，apply，bind<br>定义位置：Function.prototype 函数类的原型上。相对于每个function这个类的实例来说都是公有方法。</p>
 <p>call方法执行步骤：</p>
 <blockquote>
-<p>1、函数实例先找到定义在function.prototype上的call<br>2、call方法执行把这个函数实例中的this修改成了call的第一个参数。<br>3、函数实例执行<br><strong>PS：</strong>call从第二个参数开始就是传给调用call的函数实例的。<br><strong>PS：</strong>在函数实例调用call方法和apply方法之后，这个函数就执行结束了。</p>
-</blockquote>
-<p>X:严格模式（ use strict）和非严格模式</p>
-<blockquote>
-<p>区别：<br>1、使用call的时候，如果把this修改成null和undefined，在非严格模式下是     window。<br>2、自运行函数的this和函数执行前面没有’.’的情况下，在严格模式下this都是undefined，非严格模式下是window。</p>
-</blockquote>
-<p>apply方法：</p>
-<blockquote>
-<p>和call方法的作用基本相同。apply的第二个参数是一个数组，会把数组中的每一项作为调用apply方法的函数实例的参数。<br><strong>PS：</strong>和call一样都是在修改完this之后吧函数执行了。</p>
-</blockquote>
-<p> bind：</p>
-<blockquote>
-<p>call和apply都已经把函数执行完，bind是返回了一个修改好this的新函数<br>使用bind的时候一般只是修改this，返回值执行的时候再传参。不兼容</p>
-</blockquote>
-<p>Object.prototype.toString.call([]);</p>
-<blockquote>
-<p>相当于call把toString方法中的this修改成了数组，而原型上方法中的this一般是实例，已经把this更改成了这个数组，那么toString就被数组偷偷的调用了一次。<br>object原型上的toString方法打印”[object Object]”这样的字符串，后半部分就是标记当前实例所属类型。</p>
-</blockquote>
-
+<p>1、函数实例先找到定义在function.prototype上的call<br>2、call方法执行把这个函数实例中的this修改成了call的第一个参数。<br>3、函数实例执行<br><strong>PS：</strong>call从第二个参数开始就是传给调用call的函数实例的。<br><strong>PS：</strong>在函数实例调用call方法和apply方法之后，这个函数就执行结束了。<br>
+        
+          <a class="article-more-a" href="/2017/06/19/apply-call和bind/#more">more >></a>
+        
       
 
       
@@ -512,7 +488,8 @@ alert(b2.arr);//brother,sister,baba,parents
 <h4 id="正则用法："><a href="#正则用法：" class="headerlink" title="正则用法："></a>正则用法：</h4><blockquote>
 <p>1、验证字符串是否符合正则所制定的规则  ==》注册输入用户名密码的时候。<br> 2、把符合规则的字符串部分从字符串中捕获 ==》从名字中获取姓氏。<br>         PS：基本就是用来操作字符串的<br>        验证：reg.test(‘’);<br>        捕获：reg.exec(‘’);</p>
 </blockquote>
-<pre><code>var reg =/a/; //字面量
+<pre><code>    &lt;!--more--&gt;
+var reg =/a/; //字面量
 var str =&apos;234adf&apos;;
 console.log(reg.test(str)); //true,只要字符串中包含字母a就可以。
 </code></pre><h4 id="特殊元字符："><a href="#特殊元字符：" class="headerlink" title="特殊元字符："></a>特殊元字符：</h4><pre><code>     \d:：0-9之间的任意一个数字
@@ -635,76 +612,6 @@ if(reg9.test(a)){
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/06/19/RegExp/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-jquery" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/19/jquery/">jQuery 基础</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/19/jquery/" class="archive-article-date">
-  	<time datetime="2017-06-19T05:37:24.698Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>####- 选择器</p>
-<pre><code>使用jQuery获取元素返回的是一个jQuery对象。才能够调用jQuery原型上的方法
-   id：#id
-   class：.class
-   tag：tag
-   如何把jQ对象转化为一个原生dom对象  ==》通过索引值来获取
-   var $res4 = $(&apos;#div1 p&apos;)[0] 
-   var $res4 = $(&apos;#div1 p&apos;).get(index);
-</code></pre><blockquote>
-<p>基本选择器<br>
-        
-          <a class="article-more-a" href="/2017/06/19/jquery/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jquery</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/19/jquery/">展开全文 >></a>
         </p>
       
 
