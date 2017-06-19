@@ -100,7 +100,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="null" class="js-avatar">
+				<img src="./img/header.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">孟倩</h1>
@@ -150,6 +150,194 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-event" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/19/event/">event</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/19/event/" class="archive-article-date">
+  	<time datetime="2017-06-19T05:17:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>鼠标事件对象</p>
+<ul>
+<li>产生：绑定事件对应的那个函数中，并且可以作为参数传递</li>
+<li>ps：标准浏览器中事件对象e存在于绑定的函数中，在ie低版本中事件对象在window的event属性上==》e = e || window.event;</li>
+<li>clientX：鼠标点击位置相对于窗口的x轴的坐标；</li>
+<li>clientY：鼠标点击位置相对于窗口的y轴的坐标；</li>
+<li>pageX：鼠标位置相对于页面的X轴；</li>
+<li>pageY：鼠标位置相对于页面Y轴；<br><strong>e.page 的兼容处理：</strong><pre><code>e.pageX = e.pageX || e.clientX + (document.documentElement.scrollLeft || document.body.scrollLeft);
+e.pageY = e.pageY || e.clientY + (document.documentElement.scrollTop || document.body.scrollTop);
+</code></pre></li>
+<li><strong>阻止默认行为：</strong><br>  preventDefault(); 标准浏览器<br>  e.returnValue = false; ie低版本<br>  兼容处理：<br>  e.preventDefault?preventDefault（）:e.returnValue = false;<br>  return false；也能处理阻止默认行为<br>  默认行为：a的默认跳转</li>
+<li><strong>e.type：</strong>当前事件类型 ‘click/mouseover/mouseout’</li>
+<li><strong>事件冒泡</strong>：点击当前元素会触发所有祖先元素的对应事件。</li>
+<li>e.target：事件源=&gt;真正事件发生的那个元素<br>兼容处理：e.target = e.target || e.srcElement;</li>
+<li>e.stopPropagation(); //阻止事件传播<br>兼容处理：<br>e.stopPropagation()?e.stopPropagation:e.cancelBubble =true;</li>
+</ul>
+</blockquote>
+<pre><code>document.onclick = function (){
+    e = e || window.event;
+    e.target = e.target || e.srcElement;
+if(e.target.nodeName == &apos;DIV&apos; &amp;&amp; e.target.className == &apos;div1&apos;){
+        //用这样的判断把所有的事件委托给祖先元素处理 ==》 事件委托
+    } 
+}
+</code></pre><blockquote>
+<p>键盘事件</p>
+<ul>
+<li>e.keycode：按键编码<pre><code>Enter ：13   
+Space：32
+backspace：8
+left：37
+top：38
+right：39
+bottom：40
+0-9：48-57 //不是小键盘的数字
+</code></pre></li>
+<li>key：按键 “j”。。。</li>
+</ul>
+</blockquote>
+<pre><code>var input = document.getElementById(&apos;input&apos;);
+input.onkeyup = funtion (e){
+    e = e || window.event;
+    console.log(e);// KeyBoardEvent
+    if(e.keycode == 13){
+        div1.onclick();
+        //回车的时候触发div1的点击事件
+    }
+}
+</code></pre><blockquote>
+<p>放大镜</p>
+</blockquote>
+<pre><code>&lt;body&gt;
+    &lt;div id=&quot;box&quot;&gt;
+        &lt;img src=&quot;images/iphone.jpg&quot; &gt;
+    &lt;div id=&quot;mask&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;show&quot;&gt;
+    &lt;div&gt;
+        &lt;img src=&quot;images/iphone_big.jpg&quot; alt=&quot;&quot;&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;script&gt;
+var box = document.getElementById(&apos;box&apos;);
+var mask = document.getElementById(&apos;mask&apos;);
+var show = document.getElementById(&apos;show&apos;);
+var div = show.getElementsByTagName(&apos;div&apos;)[0];
+//onmouseenter 和 onmouseleave 就是阻止子元素和父元素的冒泡行为
+box.onmouseenter = function (e) {
+    console.log(1);
+    e = e || window.event;
+    mask.style.display = &apos;block&apos;;
+    show.style.display = &apos;block&apos;;
+};
+box.onmousemove = function (e) {
+    e =e || window.event;
+    var l = e.clientX - box.offsetLeft - mask.offsetWidth/2;
+    var t = e.clientY - box.offsetTop - mask.offsetHeight/2;
+    // 过界判断
+    var minL = 0;
+    var minT = 0;
+    var maxL = box.offsetWidth - mask.offsetWidth;
+    var maxT = box.offsetHeight - mask.offsetHeight;
+    l = l&lt;minL? minL:l&gt;maxL? maxL:l;
+    t = t&lt; minT ? minT : t&gt; maxT ? maxT:t;
+    mask.style.top = t+&apos;px&apos;;
+    div.style.top = -2*t+&apos;px&apos;;
+    mask.style.left = l +&apos;px&apos;;
+    div.style.left = -2*l+&apos;px&apos;;
+};
+box.onmouseleave = function () {
+    console.log(2);
+    mask.style.display = &apos;none&apos;;
+    show.style.display = &apos;none&apos;;
+};
+&lt;/script&gt;
+</code></pre><blockquote>
+<p>DOM2级事件<br> 同一个事件可以绑定多个函数 ==》类似于$().on();</p>
+</blockquote>
+<pre><code>div1.onclick = function (){}; //赋值过程
+div1.addEventListener(&apos;click&apos;,fn1,false);
+false:是否捕获
+div1.removeEventListener(&apos;click&apos;,fn1);
+//IE中绑定事件
+div1.attachEvent(&apos;onclick&apos;,fn1);
+div1.detachEvent(&apos;onclick&apos;,fn1);
+</code></pre><blockquote>
+<p>兼容性处理 </p>
+</blockquote>
+<pre><code>function on(ele,type,fn) {
+    if(ele.addEventListener){ //标准浏览器
+        ele.addEventListener(type,fn);
+    }else{ //IE8-
+        if(!ele[&apos;AAA&apos;+type]){ //同一个ele同一个type只能成立一次
+            ele[&apos;AAA&apos;+type] = [];
+            ele.attachEvent(&apos;on&apos;+type,run); //同一个ele同一个type只能绑定一个run，事件触发的时候触发的是run事件,执行的时候获取放在自定义属性数组中的fn1-9；并且按照顺序执行
+        }
+        var a = ele[&apos;AAA&apos;+type];
+        for(var i = 0;i&lt;a.length;i++){
+        //如果数组中存在fn那么就没有必要添加了
+            if(a[i] === fn){
+                return;
+            }//把fn1 -9 添加到自定义的数组中，事件发生的时候找出来，
+        }
+        a.push(fn);
+    }
+}
+function run(e) {
+    //执行的时候负责获取到自定义属性数组，但是一定要应对好
+    e = window.event;
+    e.target = e.srcElement;
+    var a = e.target[&apos;AAA&apos;+e.type];
+    if(a){
+        for(var i =0;i&lt;a.length;i++){
+            if(typeof a[i] == &apos;function&apos;){
+                a[i].call(e.target);
+            }
+        }
+    }
+}
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/19/event/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
   
     <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
