@@ -151,6 +151,504 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-闭包" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/19/闭包/">闭包</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/19/闭包/" class="archive-article-date">
+  	<time datetime="2017-06-19T12:27:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###闭包<br>闭包：当函数执行的时候，就会形成一个私有作用域（栈），这个私有作用域保护私有变量不受外界干扰的这种机制叫做闭包。</p>
+<pre><code>function fn(){
+    var num = 10;
+    a=50；
+    window.y=10;//多了一个叫做y的全局变量，值为10；
+}
+fn();
+console.log(a);//---50；如果是一个赋值过程，最不济也能赋值成全局变量，如果是取值过程，到全局变量还没有获取到就报错。
+所有的全局变量都可以认为是window的一个属性。
+    //fn执行的时候形成了一个私有作用域，并且这个作用域把var num=10，保护起来，形成了一个闭包==》闭包形成的前提是有函数执行。
+</code></pre><hr>
+<pre><code>var total=1200;
+function foo(){
+    var total= 120;
+    return function (){
+        var total =12;
+        console.log(total);
+    }
+}
+foo()
+</code></pre><p>#####二、堆栈内存的释放<br>只要这个内存还在被占用，那么就不能被释放。</p>
+<pre><code>堆内存释放：
+var obj={//obj就在占用这个对象的堆内存地址，所以这个堆不能释放
+    name:&apos;mengqian&apos;,
+    age:24
+};
+obj=null；//obj这个变量再也不占用的对象的堆内存地址。
+</code></pre><blockquote>
+<p><strong>栈内存不被释放的条件：</strong></p>
+</blockquote>
+<ul>
+<li>函数执行的时候（fn），会形成一个私有作用域，如果这个函数（fn）中的一部分（必须是引用数据类型值return后面的函数）被函数外（fn外）变量（f）或者对象的属性占用，那么fn执行形成的作用域就符合不被释放的条件。<strong>从而在这个作用域内的私有变量（total=120）甚至形参都能保存下来。</strong> </li>
+</ul>
+<blockquote>
+<p>1)全局变量f占用return出来的匿名函数，符合fn执行形成的作用域不被释放的条件。</p>
+</blockquote>
+<pre><code>栈(作用域)释放：
+var total=1200；
+function fn(){
+    var total =120;
+    return function (){
+        var total=12；
+        console.log(total);
+    }
+}
+var f = fn();//全局变量f占用着fn函数执行结果。
+document.body.xxx=fn();
+f();
+</code></pre><blockquote>
+<p>2)如果不return出来，那么可以到函数内部去占用这个返回值。</p>
+</blockquote>
+<pre><code>function fxx(){
+    var xx=1000;
+    function fyy(){
+
+    }
+    window.fyy=fyy;
+}
+fxx();
+</code></pre><blockquote>
+<p>3)在绑定事件过程中，也有可能和作用域不释放掺和到一起。</p>
+</blockquote>
+<pre><code>function fzz(){
+    var cont =0;
+    function zz(){
+        cont ++;
+        console.log(cont);
+    }
+    div1.onclick =zz;//div1的onclick的属性占用fzz函数的zz函数，fzz函数执行的时候形成的作用域不被释放。===》cont值就被保留下来。
+}
+fzz();
+div1.onclick();//----1,主动触发这个事件，
+点击的时候可以继续往下执行。
+</code></pre><p>补充： i++和++i<br>1、i++ 和 ++i 没有和其他值做运算效果是一样的，是自身累加1。<br>2、i++是先运算后累加，++i 是先累加后运算。<br>++i有强制转化为数字的默认行为</p>
+<blockquote>
+<p>4)不立刻释放作用域</p>
+</blockquote>
+<pre><code>function fun(){
+    var i=0;
+    return function(){
+        console.log(++i);
+    }
+}
+fun()();
+</code></pre><p>#####引用数据类型赋值过程</p>
+<blockquote>
+<ul>
+<li>浏览器先去开辟一块堆内存</li>
+<li>如果是对象那么就把键值对当字符串存入到这个内存中，如果是函数那么就把函数体内的代码当作字符串存入到内存中</li>
+<li>最后把这个地址返回<br><strong>注意！！！赋值过程中不能使用当前变量</strong></li>
+</ul>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/19/闭包/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-JavaScript中的继承方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/19/JavaScript中的继承方法/">JavaScript中的继承方法</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/19/JavaScript中的继承方法/" class="archive-article-date">
+  	<time datetime="2017-06-19T12:04:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>####继承</p>
+<blockquote>
+<p>类式继承是在子类型构造函数的内部调用超类型的构造函数。</p>
+</blockquote>
+<pre><code>function C(){
+    this.x=100,
+    this.y=200
+}
+C.prototype.getX=function(){  
+    console.log(&quot;x&quot;)
+}
+function D(){
+    C.call(this); //把C中的this改成D的实例；
+}
+var d= new D();
+console.dir(d) //打印x =100; y = 200;
+</code></pre><blockquote>
+<p>原型链继承</p>
+</blockquote>
+<pre><code>function Parent(){
+    this.name = &apos;mike&apos;;
+}
+
+function Child(){
+    this.age = 12;
+}
+Child.prototype = new Parent();//Child继承Parent，通过原型，形成链条
+
+var test = new Child();
+alert(test.age);
+alert(test.name);//得到被继承的属性
+//继续原型链继承
+function Brother(){   //brother构造
+    this.weight = 60;
+}
+Brother.prototype = new Child();//继续原型链继承
+var brother = new Brother();
+alert(brother.name);//继承了Parent和Child,弹出mike
+alert(brother.age);//弹出12
+</code></pre><blockquote>
+<p>组合式继承</p>
+</blockquote>
+<pre><code>function Parent(age){
+    this.name = [&apos;mike&apos;,&apos;jack&apos;,&apos;smith&apos;];
+    this.age = age;
+}
+Parent.prototype.run = function () {
+    return this.name  + &apos; is&apos; + this.age;
+};
+function Child(age){
+    Parent.call(this,age);//对象冒充，给超类型传参
+}
+Child.prototype = new Parent();//原型链继承
+var test = new Child(21);//写new Parent(21)也行
+alert(test.run());//mike,jack,smith is 21
+</code></pre><blockquote>
+<p>原型式继承</p>
+</blockquote>
+<pre><code> function obj(o){
+     function F(){}
+     F.prototype = o;
+     return new F();
+ }
+var box = {
+    name : &apos;trigkit4&apos;,
+    arr : [&apos;brother&apos;,&apos;sister&apos;,&apos;baba&apos;]
+};
+var b1 = obj(box);
+alert(b1.name);//trigkit4
+
+b1.name = &apos;mike&apos;;
+alert(b1.name);//mike
+
+alert(b1.arr);//brother,sister,baba
+b1.arr.push(&apos;parents&apos;);
+alert(b1.arr);//brother,sister,baba,parents
+
+var b2 = obj(box);
+alert(b2.name);//trigkit4
+alert(b2.arr);//brother,sister,baba,parents
+</code></pre><blockquote>
+<p>call和apply,通过call和apply改变this指向</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/19/JavaScript中的继承方法/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-apply-call和bind" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/19/apply-call和bind/">apply,call和bind</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/19/apply-call和bind/" class="archive-article-date">
+  	<time datetime="2017-06-19T12:02:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>####call，apply，bind<br>定义位置：Function.prototype 函数类的原型上。相对于每个function这个类的实例来说都是公有方法。</p>
+<p>call方法执行步骤：</p>
+<blockquote>
+<p>1、函数实例先找到定义在function.prototype上的call<br>2、call方法执行把这个函数实例中的this修改成了call的第一个参数。<br>3、函数实例执行<br><strong>PS：</strong>call从第二个参数开始就是传给调用call的函数实例的。<br><strong>PS：</strong>在函数实例调用call方法和apply方法之后，这个函数就执行结束了。</p>
+</blockquote>
+<p>X:严格模式（ use strict）和非严格模式</p>
+<blockquote>
+<p>区别：<br>1、使用call的时候，如果把this修改成null和undefined，在非严格模式下是     window。<br>2、自运行函数的this和函数执行前面没有’.’的情况下，在严格模式下this都是undefined，非严格模式下是window。</p>
+</blockquote>
+<p>apply方法：</p>
+<blockquote>
+<p>和call方法的作用基本相同。apply的第二个参数是一个数组，会把数组中的每一项作为调用apply方法的函数实例的参数。<br><strong>PS：</strong>和call一样都是在修改完this之后吧函数执行了。</p>
+</blockquote>
+<p> bind：</p>
+<blockquote>
+<p>call和apply都已经把函数执行完，bind是返回了一个修改好this的新函数<br>使用bind的时候一般只是修改this，返回值执行的时候再传参。不兼容</p>
+</blockquote>
+<p>Object.prototype.toString.call([]);</p>
+<blockquote>
+<p>相当于call把toString方法中的this修改成了数组，而原型上方法中的this一般是实例，已经把this更改成了这个数组，那么toString就被数组偷偷的调用了一次。<br>object原型上的toString方法打印”[object Object]”这样的字符串，后半部分就是标记当前实例所属类型。</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/19/apply-call和bind/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-RegExp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/19/RegExp/">RegExp</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/19/RegExp/" class="archive-article-date">
+  	<time datetime="2017-06-19T11:56:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###正则</p>
+<h4 id="正则用法："><a href="#正则用法：" class="headerlink" title="正则用法："></a>正则用法：</h4><blockquote>
+<p>1、验证字符串是否符合正则所制定的规则  ==》注册输入用户名密码的时候。<br> 2、把符合规则的字符串部分从字符串中捕获 ==》从名字中获取姓氏。<br>         PS：基本就是用来操作字符串的<br>        验证：reg.test(‘’);<br>        捕获：reg.exec(‘’);</p>
+</blockquote>
+<pre><code>var reg =/a/; //字面量
+var str =&apos;234adf&apos;;
+console.log(reg.test(str)); //true,只要字符串中包含字母a就可以。
+</code></pre><h4 id="特殊元字符："><a href="#特殊元字符：" class="headerlink" title="特殊元字符："></a>特殊元字符：</h4><pre><code>     \d:：0-9之间的任意一个数字
+     \w：数字、字母、_  中的一个
+     \s：空格或者空白等
+     \n：匹配一个换行
+     \：转义==》把特殊意义的字符转变为本来的意思
+     \b：匹配一个边界==》边界不占位，字符串的开始结束，一些特殊字符串的两边
+     . ：匹配任意字符出了/n
+     \.：&quot;.&quot;本身
+     \D：除了\d
+     \W：除了\w
+     \S：除了\s
+     ^：以什么开始
+     $：以什么结束
+     ps：如果^和 $同时出现，那么对字符串的个数就限制了enter code here
+
+var reg2 =/\d/;
+var reg3 =/\d\d/; //必须有两个连续出现的数字。
+console.log(reg.test(&apos;str5332&apos;)); //true;
+var reg4 =/\w\d/; //必须是数字字母下划线连接一个数字
+</code></pre><h4 id="量词："><a href="#量词：" class="headerlink" title="量词："></a>量词：</h4><pre><code>+ ：1到多个 至少一个              
+* ：0到多个
+？：0-1个 要么出现 要么不出现
+{n}：出现n个
+{n，}：至少n个
+{n，m}：出现n-m个
+</code></pre><p>####正则中的或者：</p>
+<pre><code>1、x|y   x或者y中的一个 
+ x|y|z  由于或者关系是满足其中一个就可以，所以处理或者关系的时候 可以添加一个（）去改变处理运算的优先级
+2、[xyz] x或者y或者z中的一个
+3、[^xyz] 除了xyz中的一个  false的时候字符串中就只能有xyz
+4、[+-]&quot;+&quot;或者&quot;-&quot;中的一个
+5、[\d\w] 数字字母还有下划线中的一个
+6、\w：[0-9a-zA-Z]  &quot;-&quot;在[]中是到的意思
+7、[.] 代表的不是任意字符是&quot;.&quot;本身
+</code></pre><blockquote>
+<p>正则创建方式的区别：</p>
+</blockquote>
+<p>1、如果使用实例的创建方式创建，当有特殊元字符的时候（\d）需要在创建的时候还在前面添加一个\new RegExp(‘\d’);<br>2、实例创建，new的过程中第二个参数就是修饰符；<br>3、只要正则中有需要用变量的时刻，那么就只能使用实例的创建方式。</p>
+<p>###正则中exec方法：</p>
+<p>####exec捕获结果：</p>
+<blockquote>
+<p>1、reg.exec();返回一个数组<br>[正则捕获回来的结果 index：捕获开始位置的索引 input：原有字符串]<br>2、reg.lastIndex =&gt;下一次捕获从哪个索引位置开始，当捕获结果为null，这个属性就会重新赋值为0，然后又开始重新捕获</p>
+</blockquote>
+<p>####match：</p>
+<blockquote>
+<p>1、返回一个数组<br>2、会一次性把所有符合要求的捕获回来</p>
+<p>####正则中的分组和分组的引用：</p>
+<p>#####?用法：<br>1、？量词 0-1次<br>2、（？：\d）放在一个分组的前面，匹配不捕获 破坏分组<br><strong>分组：</strong>想获取到字符串中的一部分那么可以使用分组 =》在大正则中使用小括号<br><strong>分组影响捕获结果：</strong>exec 捕获返回的结果数组，从第二项开始分别是捕获到的内容<br><strong>分组的引用：</strong>当后面出现的字符需要和前面保持一致，需要用到分组的引用<br><strong>PS：</strong>括号从左到右依次出现的顺序作为分组顺序<br>RegExp.\$9保存着正则实例最后一次被使用分组的内容</p>
+<p>####split的用法：<br>split的参数可以是一个正则，拆分字符串的时候会把正则匹配到的位置全部拆分。</p>
+<p>####replace的用法：<br>1、replace 返回一个新的替换好的字符串 str =str.replace（旧，新）<br>2、如果第二个参数是一个函数，是这个函数的返回值来替换第一个参数所匹配到的内容==》函数执行的次数取决于第一个参数成功匹配的次数<br>3、第二个函数参数中的arguments：<br>[总正则匹配在当次执行匹配到的内容，从第二项开始分别是分组1…，index，input]<br>4、当第二个函数是”$1”字符串的时候，如果有分组代表的就是分组一。</p>
+<p>#####例子：<br>获取关键信息</p>
+</blockquote>
+<pre><code>var str =&quot;www.baidu.com/s?wd=meng&amp;kd=qian&quot;;
+String.prototype.query = function () {
+   var obj={};
+   var reg= /([^?&amp;=]+)=([^?&amp;=]+)/g;
+   this.replace(reg,function(){
+       obj[arguments[1]] =arguments[2];
+   });
+   return console.log(obj);
+   };
+   str.query();
+</code></pre><blockquote>
+<p>如何找出一个字符串中出现次数最多的字符，出现几次</p>
+</blockquote>
+<pre><code> var str2 =&quot;aabbcddaa&quot;;
+ var reg =/(\w)/g;
+ var obj ={};
+ str2.replace(reg,function () {
+    if(obj[arguments[1]]){
+        obj[arguments[1]] += 1;
+    }else{
+        obj[arguments[1]] = 1;
+    }
+ });
+ var max =0;
+ for (var key in obj){
+    if(obj[key] &gt;max){
+        max= obj[key];
+    }
+ }
+ var ary=[];
+ for (var key in obj){
+    if(obj[key] == max){
+        ary.push(key);
+    }
+}
+console.log(ary);
+</code></pre><p>####辨别浏览器型号</p>
+<pre><code> ;(function () {
+var reg9 = /(MSIE)|(rv)/;
+var reg7 =/Chrome/;
+var a = window.navigator.appVersion;
+if(reg9.test(a)){
+    var reg8 =/\d+\.\d+/g;
+    reg8.lastIndex = reg9.exec(a).index;
+    var b = reg8.exec(a);
+    var str =&quot;&quot;;
+    str += &quot;IE浏览器&quot; + b;
+    console.log(str);
+}else{
+    if(reg7.test(a)){
+        str = &quot;谷歌浏览器&quot;;
+        console.log(str);
+    }
+}
+}) ();
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/19/RegExp/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-jquery" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

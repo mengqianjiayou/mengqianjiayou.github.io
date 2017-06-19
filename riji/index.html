@@ -8,13 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>随笔 | 孟倩博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="####this用法：  1、绑定事件中的this就是绑定的元素=》事件绑定给谁this就是谁。(全局作用域中的this指的是window)。2、函数执行的时候，函数中的this就是调用这个函数的宿主。’.’前面是谁，这个函数的this就是谁。ps：只要有函数包含this，那么this就一定发生了改变。ps：只有函数在执行的那一刻才能确定函数中的this     例如下面：fn()和obj.fn(">
+<meta property="og:type" content="website">
 <meta property="og:title" content="随笔">
 <meta property="og:url" content="http://yoursite.com/riji/index.html">
 <meta property="og:site_name" content="孟倩博客">
-<meta property="og:updated_time" content="2017-06-19T06:10:51.034Z">
+<meta property="og:description" content="####this用法：  1、绑定事件中的this就是绑定的元素=》事件绑定给谁this就是谁。(全局作用域中的this指的是window)。2、函数执行的时候，函数中的this就是调用这个函数的宿主。’.’前面是谁，这个函数的this就是谁。ps：只要有函数包含this，那么this就一定发生了改变。ps：只有函数在执行的那一刻才能确定函数中的this     例如下面：fn()和obj.fn(">
+<meta property="og:updated_time" content="2017-06-19T12:29:05.237Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="随笔">
+<meta name="twitter:description" content="####this用法：  1、绑定事件中的this就是绑定的元素=》事件绑定给谁this就是谁。(全局作用域中的this指的是window)。2、函数执行的时候，函数中的this就是调用这个函数的宿主。’.’前面是谁，这个函数的this就是谁。ps：只要有函数包含this，那么this就一定发生了改变。ps：只有函数在执行的那一刻才能确定函数中的this     例如下面：fn()和obj.fn(">
   
     <link rel="alternative" href="/atom.xml" title="孟倩博客" type="application/atom+xml">
   
@@ -170,7 +173,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>####this用法：</p>
+<blockquote>
+<p>1、绑定事件中的this就是绑定的元素=》事件绑定给谁this就是谁。(全局作用域中的this指的是window)。<br>2、函数执行的时候，函数中的this就是调用这个函数的宿主。’.’前面是谁，这个函数的this就是谁。<br><strong>ps：</strong>只要有函数包含this，那么this就一定发生了改变。<br><strong>ps：</strong>只有函数在执行的那一刻才能确定函数中的this     例如下面：fn()和obj.fn()。<br><strong>ps：</strong>fn()和obj.fn()执行的是同一个函数，由于执行方式不同导致this不同。<br>3、自执行函数中的this指的是window。(非严格模式下)<br>4、定时器函数中的this一般是window。<br>5、构造函数中的this是实例。<br>6、call和apply和bind都可以强制修改this。<br>7、回调函数中的this一般也是window。</p>
+</blockquote>
+<pre><code> function fn(){
+    console.log(this);
+}
+fn(); //这样执行打印的是window
+var obj={
+    name:&apos;mengqian&apos;,
+    fn:fn
+};
+obj.fn();//这样执行打印的是obj
+</code></pre>
       
 
       
