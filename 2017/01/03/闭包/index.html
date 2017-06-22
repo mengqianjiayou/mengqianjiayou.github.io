@@ -6,18 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>随笔 | 孟倩博客</title>
+  <title>闭包 | 孟倩博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="####this用法：  1、绑定事件中的this就是绑定的元素=》事件绑定给谁this就是谁。(全局作用域中的this指的是window)。2、函数执行的时候，函数中的this就是调用这个函数的宿主。’.’前面是谁，这个函数的this就是谁。ps：只要有函数包含this，那么this就一定发生了改变。ps：只有函数在执行的那一刻才能确定函数中的this     例如下面：fn()和obj.fn(">
-<meta property="og:type" content="website">
-<meta property="og:title" content="随笔">
-<meta property="og:url" content="http://yoursite.com/riji/index.html">
+  <meta name="description" content="###闭包闭包：当函数执行的时候，就会形成一个私有作用域（栈），这个私有作用域保护私有变量不受外界干扰的这种机制叫做闭包。 function fn(){     var num = 10;     a=50；     window.y=10;//多了一个叫做y的全局变量，值为10； } fn();">
+<meta property="og:type" content="article">
+<meta property="og:title" content="闭包">
+<meta property="og:url" content="http://yoursite.com/2017/01/03/闭包/index.html">
 <meta property="og:site_name" content="孟倩博客">
-<meta property="og:description" content="####this用法：  1、绑定事件中的this就是绑定的元素=》事件绑定给谁this就是谁。(全局作用域中的this指的是window)。2、函数执行的时候，函数中的this就是调用这个函数的宿主。’.’前面是谁，这个函数的this就是谁。ps：只要有函数包含this，那么this就一定发生了改变。ps：只有函数在执行的那一刻才能确定函数中的this     例如下面：fn()和obj.fn(">
-<meta property="og:updated_time" content="2017-06-19T12:29:05.237Z">
+<meta property="og:description" content="###闭包闭包：当函数执行的时候，就会形成一个私有作用域（栈），这个私有作用域保护私有变量不受外界干扰的这种机制叫做闭包。 function fn(){     var num = 10;     a=50；     window.y=10;//多了一个叫做y的全局变量，值为10； } fn();">
+<meta property="og:updated_time" content="2017-06-22T01:30:23.041Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="随笔">
-<meta name="twitter:description" content="####this用法：  1、绑定事件中的this就是绑定的元素=》事件绑定给谁this就是谁。(全局作用域中的this指的是window)。2、函数执行的时候，函数中的this就是调用这个函数的宿主。’.’前面是谁，这个函数的this就是谁。ps：只要有函数包含this，那么this就一定发生了改变。ps：只有函数在执行的那一刻才能确定函数中的this     例如下面：fn()和obj.fn(">
+<meta name="twitter:title" content="闭包">
+<meta name="twitter:description" content="###闭包闭包：当函数执行的时候，就会形成一个私有作用域（栈），这个私有作用域保护私有变量不受外界干扰的这种机制叫做闭包。 function fn(){     var num = 10;     a=50；     window.y=10;//多了一个叫做y的全局变量，值为10； } fn();">
   
     <link rel="alternative" href="/atom.xml" title="孟倩博客" type="application/atom+xml">
   
@@ -153,40 +153,120 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-undefined" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-闭包" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      随笔
+      闭包
     </h1>
   
 
         
-        <a href="/riji/index.html" class="archive-article-date">
-  	<time datetime="2017-06-19T06:07:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-19</time>
+        <a href="/2017/01/03/闭包/" class="archive-article-date">
+  	<time datetime="2017-01-03T12:27:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>####this用法：</p>
-<blockquote>
-<p>1、绑定事件中的this就是绑定的元素=》事件绑定给谁this就是谁。(全局作用域中的this指的是window)。<br>2、函数执行的时候，函数中的this就是调用这个函数的宿主。’.’前面是谁，这个函数的this就是谁。<br><strong>ps：</strong>只要有函数包含this，那么this就一定发生了改变。<br><strong>ps：</strong>只有函数在执行的那一刻才能确定函数中的this     例如下面：fn()和obj.fn()。<br><strong>ps：</strong>fn()和obj.fn()执行的是同一个函数，由于执行方式不同导致this不同。<br>3、自执行函数中的this指的是window。(非严格模式下)<br>4、定时器函数中的this一般是window。<br>5、构造函数中的this是实例。<br>6、call和apply和bind都可以强制修改this。<br>7、回调函数中的this一般也是window。</p>
-</blockquote>
-<pre><code> function fn(){
-    console.log(this);
+        <p>###闭包<br>闭包：当函数执行的时候，就会形成一个私有作用域（栈），这个私有作用域保护私有变量不受外界干扰的这种机制叫做闭包。</p>
+<pre><code>function fn(){
+    var num = 10;
+    a=50；
+    window.y=10;//多了一个叫做y的全局变量，值为10；
 }
-fn(); //这样执行打印的是window
-var obj={
+fn();
+</code></pre>   <a id="more"></a>
+<pre><code>console.log(a);//---50；如果是一个赋值过程，最不济也能赋值成全局变量，如果是取值过程，到全局变量还没有获取到就报错。
+所有的全局变量都可以认为是window的一个属性。
+    //fn执行的时候形成了一个私有作用域，并且这个作用域把var num=10，保护起来，形成了一个闭包==》闭包形成的前提是有函数执行。
+</code></pre><hr>
+<pre><code>var total=1200;
+function foo(){
+    var total= 120;
+    return function (){
+        var total =12;
+        console.log(total);
+    }
+}
+foo()
+</code></pre><p>#####二、堆栈内存的释放<br>只要这个内存还在被占用，那么就不能被释放。</p>
+<pre><code>堆内存释放：
+var obj={//obj就在占用这个对象的堆内存地址，所以这个堆不能释放
     name:&apos;mengqian&apos;,
-    fn:fn
+    age:24
 };
-obj.fn();//这样执行打印的是obj
-</code></pre>
+obj=null；//obj这个变量再也不占用的对象的堆内存地址。
+</code></pre><blockquote>
+<p><strong>栈内存不被释放的条件：</strong></p>
+</blockquote>
+<ul>
+<li>函数执行的时候（fn），会形成一个私有作用域，如果这个函数（fn）中的一部分（必须是引用数据类型值return后面的函数）被函数外（fn外）变量（f）或者对象的属性占用，那么fn执行形成的作用域就符合不被释放的条件。<strong>从而在这个作用域内的私有变量（total=120）甚至形参都能保存下来。</strong> </li>
+</ul>
+<blockquote>
+<p>1)全局变量f占用return出来的匿名函数，符合fn执行形成的作用域不被释放的条件。</p>
+</blockquote>
+<pre><code>栈(作用域)释放：
+var total=1200；
+function fn(){
+    var total =120;
+    return function (){
+        var total=12；
+        console.log(total);
+    }
+}
+var f = fn();//全局变量f占用着fn函数执行结果。
+document.body.xxx=fn();
+f();
+</code></pre><blockquote>
+<p>2)如果不return出来，那么可以到函数内部去占用这个返回值。</p>
+</blockquote>
+<pre><code>function fxx(){
+    var xx=1000;
+    function fyy(){
+
+    }
+    window.fyy=fyy;
+}
+fxx();
+</code></pre><blockquote>
+<p>3)在绑定事件过程中，也有可能和作用域不释放掺和到一起。</p>
+</blockquote>
+<pre><code>function fzz(){
+    var cont =0;
+    function zz(){
+        cont ++;
+        console.log(cont);
+    }
+    div1.onclick =zz;//div1的onclick的属性占用fzz函数的zz函数，fzz函数执行的时候形成的作用域不被释放。===》cont值就被保留下来。
+}
+fzz();
+div1.onclick();//----1,主动触发这个事件，
+点击的时候可以继续往下执行。
+</code></pre><p>补充： i++和++i<br>1、i++ 和 ++i 没有和其他值做运算效果是一样的，是自身累加1。<br>2、i++是先运算后累加，++i 是先累加后运算。<br>++i有强制转化为数字的默认行为</p>
+<blockquote>
+<p>4)不立刻释放作用域</p>
+</blockquote>
+<pre><code>function fun(){
+    var i=0;
+    return function(){
+        console.log(++i);
+    }
+}
+fun()();
+</code></pre><p>#####引用数据类型赋值过程</p>
+<blockquote>
+<ul>
+<li>浏览器先去开辟一块堆内存</li>
+<li>如果是对象那么就把键值对当字符串存入到这个内存中，如果是函数那么就把函数体内的代码当作字符串存入到内存中</li>
+<li>最后把这个地址返回<br><strong>注意！！！赋值过程中不能使用当前变量</strong></li>
+</ul>
+</blockquote>
+
       
 
       
@@ -265,7 +345,7 @@ obj.fn();//这样执行打印的是obj
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/riji/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/01/03/闭包/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -277,6 +357,16 @@ obj.fn();//这样执行打印的是obj
 </article>
 
   
+<nav id="article-nav">
+  
+  
+    <a href="/2016/11/23/JavaScript中的继承方法/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaScript中的继承方法</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 
 
@@ -284,7 +374,7 @@ obj.fn();//这样执行打印的是obj
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="undefined" data-title="随笔" data-url="http://yoursite.com/riji/index.html"></div>
+	<div class="ds-thread" data-thread-key="闭包" data-title="闭包" data-url="http://yoursite.com/2017/01/03/闭包/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -330,7 +420,7 @@ obj.fn();//这样执行打印的是obj
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

@@ -6,18 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>随笔 | 孟倩博客</title>
+  <title>RegExp | 孟倩博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="####this用法：  1、绑定事件中的this就是绑定的元素=》事件绑定给谁this就是谁。(全局作用域中的this指的是window)。2、函数执行的时候，函数中的this就是调用这个函数的宿主。’.’前面是谁，这个函数的this就是谁。ps：只要有函数包含this，那么this就一定发生了改变。ps：只有函数在执行的那一刻才能确定函数中的this     例如下面：fn()和obj.fn(">
-<meta property="og:type" content="website">
-<meta property="og:title" content="随笔">
-<meta property="og:url" content="http://yoursite.com/riji/index.html">
+  <meta name="description" content="###正则 正则用法： 1、验证字符串是否符合正则所制定的规则  ==》注册输入用户名密码的时候。 2、把符合规则的字符串部分从字符串中捕获 ==》从名字中获取姓氏。         PS：基本就是用来操作字符串的        验证：reg.test(‘’);        捕获：reg.exec(‘’);">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RegExp">
+<meta property="og:url" content="http://yoursite.com/2016/09/20/RegExp/index.html">
 <meta property="og:site_name" content="孟倩博客">
-<meta property="og:description" content="####this用法：  1、绑定事件中的this就是绑定的元素=》事件绑定给谁this就是谁。(全局作用域中的this指的是window)。2、函数执行的时候，函数中的this就是调用这个函数的宿主。’.’前面是谁，这个函数的this就是谁。ps：只要有函数包含this，那么this就一定发生了改变。ps：只有函数在执行的那一刻才能确定函数中的this     例如下面：fn()和obj.fn(">
-<meta property="og:updated_time" content="2017-06-19T12:29:05.237Z">
+<meta property="og:description" content="###正则 正则用法： 1、验证字符串是否符合正则所制定的规则  ==》注册输入用户名密码的时候。 2、把符合规则的字符串部分从字符串中捕获 ==》从名字中获取姓氏。         PS：基本就是用来操作字符串的        验证：reg.test(‘’);        捕获：reg.exec(‘’);">
+<meta property="og:updated_time" content="2017-06-22T01:30:23.108Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="随笔">
-<meta name="twitter:description" content="####this用法：  1、绑定事件中的this就是绑定的元素=》事件绑定给谁this就是谁。(全局作用域中的this指的是window)。2、函数执行的时候，函数中的this就是调用这个函数的宿主。’.’前面是谁，这个函数的this就是谁。ps：只要有函数包含this，那么this就一定发生了改变。ps：只有函数在执行的那一刻才能确定函数中的this     例如下面：fn()和obj.fn(">
+<meta name="twitter:title" content="RegExp">
+<meta name="twitter:description" content="###正则 正则用法： 1、验证字符串是否符合正则所制定的规则  ==》注册输入用户名密码的时候。 2、把符合规则的字符串部分从字符串中捕获 ==》从名字中获取姓氏。         PS：基本就是用来操作字符串的        验证：reg.test(‘’);        捕获：reg.exec(‘’);">
   
     <link rel="alternative" href="/atom.xml" title="孟倩博客" type="application/atom+xml">
   
@@ -153,39 +153,141 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-undefined" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-RegExp" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      随笔
+      RegExp
     </h1>
   
 
         
-        <a href="/riji/index.html" class="archive-article-date">
-  	<time datetime="2017-06-19T06:07:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-19</time>
+        <a href="/2016/09/20/RegExp/" class="archive-article-date">
+  	<time datetime="2016-09-20T11:56:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>####this用法：</p>
-<blockquote>
-<p>1、绑定事件中的this就是绑定的元素=》事件绑定给谁this就是谁。(全局作用域中的this指的是window)。<br>2、函数执行的时候，函数中的this就是调用这个函数的宿主。’.’前面是谁，这个函数的this就是谁。<br><strong>ps：</strong>只要有函数包含this，那么this就一定发生了改变。<br><strong>ps：</strong>只有函数在执行的那一刻才能确定函数中的this     例如下面：fn()和obj.fn()。<br><strong>ps：</strong>fn()和obj.fn()执行的是同一个函数，由于执行方式不同导致this不同。<br>3、自执行函数中的this指的是window。(非严格模式下)<br>4、定时器函数中的this一般是window。<br>5、构造函数中的this是实例。<br>6、call和apply和bind都可以强制修改this。<br>7、回调函数中的this一般也是window。</p>
+        <p>###正则</p>
+<h4 id="正则用法："><a href="#正则用法：" class="headerlink" title="正则用法："></a>正则用法：</h4><blockquote>
+<p>1、验证字符串是否符合正则所制定的规则  ==》注册输入用户名密码的时候。<br> 2、把符合规则的字符串部分从字符串中捕获 ==》从名字中获取姓氏。<br>         PS：基本就是用来操作字符串的<br>        验证：reg.test(‘’);<br>        捕获：reg.exec(‘’);</p>
 </blockquote>
-<pre><code> function fn(){
-    console.log(this);
+ <a id="more"></a>
+<pre><code>var reg =/a/; //字面量
+var str =&apos;234adf&apos;;
+console.log(reg.test(str)); //true,只要字符串中包含字母a就可以。
+</code></pre><h4 id="特殊元字符："><a href="#特殊元字符：" class="headerlink" title="特殊元字符："></a>特殊元字符：</h4><pre><code>     \d:：0-9之间的任意一个数字
+     \w：数字、字母、_  中的一个
+     \s：空格或者空白等
+     \n：匹配一个换行
+     \：转义==》把特殊意义的字符转变为本来的意思
+     \b：匹配一个边界==》边界不占位，字符串的开始结束，一些特殊字符串的两边
+     . ：匹配任意字符出了/n
+     \.：&quot;.&quot;本身
+     \D：除了\d
+     \W：除了\w
+     \S：除了\s
+     ^：以什么开始
+     $：以什么结束
+     ps：如果^和 $同时出现，那么对字符串的个数就限制了enter code here
+
+var reg2 =/\d/;
+var reg3 =/\d\d/; //必须有两个连续出现的数字。
+console.log(reg.test(&apos;str5332&apos;)); //true;
+var reg4 =/\w\d/; //必须是数字字母下划线连接一个数字
+</code></pre><h4 id="量词："><a href="#量词：" class="headerlink" title="量词："></a>量词：</h4><pre><code>+ ：1到多个 至少一个              
+* ：0到多个
+？：0-1个 要么出现 要么不出现
+{n}：出现n个
+{n，}：至少n个
+{n，m}：出现n-m个
+</code></pre><p>####正则中的或者：</p>
+<pre><code>1、x|y   x或者y中的一个 
+ x|y|z  由于或者关系是满足其中一个就可以，所以处理或者关系的时候 可以添加一个（）去改变处理运算的优先级
+2、[xyz] x或者y或者z中的一个
+3、[^xyz] 除了xyz中的一个  false的时候字符串中就只能有xyz
+4、[+-]&quot;+&quot;或者&quot;-&quot;中的一个
+5、[\d\w] 数字字母还有下划线中的一个
+6、\w：[0-9a-zA-Z]  &quot;-&quot;在[]中是到的意思
+7、[.] 代表的不是任意字符是&quot;.&quot;本身
+</code></pre><blockquote>
+<p>正则创建方式的区别：</p>
+</blockquote>
+<p>1、如果使用实例的创建方式创建，当有特殊元字符的时候（\d）需要在创建的时候还在前面添加一个\new RegExp(‘\d’);<br>2、实例创建，new的过程中第二个参数就是修饰符；<br>3、只要正则中有需要用变量的时刻，那么就只能使用实例的创建方式。</p>
+<p>###正则中exec方法：</p>
+<p>####exec捕获结果：</p>
+<blockquote>
+<p>1、reg.exec();返回一个数组<br>[正则捕获回来的结果 index：捕获开始位置的索引 input：原有字符串]<br>2、reg.lastIndex =&gt;下一次捕获从哪个索引位置开始，当捕获结果为null，这个属性就会重新赋值为0，然后又开始重新捕获</p>
+</blockquote>
+<p>####match：</p>
+<blockquote>
+<p>1、返回一个数组<br>2、会一次性把所有符合要求的捕获回来</p>
+<p>####正则中的分组和分组的引用：</p>
+<p>#####?用法：<br>1、？量词 0-1次<br>2、（？：\d）放在一个分组的前面，匹配不捕获 破坏分组<br><strong>分组：</strong>想获取到字符串中的一部分那么可以使用分组 =》在大正则中使用小括号<br><strong>分组影响捕获结果：</strong>exec 捕获返回的结果数组，从第二项开始分别是捕获到的内容<br><strong>分组的引用：</strong>当后面出现的字符需要和前面保持一致，需要用到分组的引用<br><strong>PS：</strong>括号从左到右依次出现的顺序作为分组顺序<br>RegExp.\$9保存着正则实例最后一次被使用分组的内容</p>
+<p>####split的用法：<br>split的参数可以是一个正则，拆分字符串的时候会把正则匹配到的位置全部拆分。</p>
+<p>####replace的用法：<br>1、replace 返回一个新的替换好的字符串 str =str.replace（旧，新）<br>2、如果第二个参数是一个函数，是这个函数的返回值来替换第一个参数所匹配到的内容==》函数执行的次数取决于第一个参数成功匹配的次数<br>3、第二个函数参数中的arguments：<br>[总正则匹配在当次执行匹配到的内容，从第二项开始分别是分组1…，index，input]<br>4、当第二个函数是”$1”字符串的时候，如果有分组代表的就是分组一。</p>
+<p>#####例子：<br>获取关键信息</p>
+</blockquote>
+<pre><code>var str =&quot;www.baidu.com/s?wd=meng&amp;kd=qian&quot;;
+String.prototype.query = function () {
+   var obj={};
+   var reg= /([^?&amp;=]+)=([^?&amp;=]+)/g;
+   this.replace(reg,function(){
+       obj[arguments[1]] =arguments[2];
+   });
+   return console.log(obj);
+   };
+   str.query();
+</code></pre><blockquote>
+<p>如何找出一个字符串中出现次数最多的字符，出现几次</p>
+</blockquote>
+<pre><code> var str2 =&quot;aabbcddaa&quot;;
+ var reg =/(\w)/g;
+ var obj ={};
+ str2.replace(reg,function () {
+    if(obj[arguments[1]]){
+        obj[arguments[1]] += 1;
+    }else{
+        obj[arguments[1]] = 1;
+    }
+ });
+ var max =0;
+ for (var key in obj){
+    if(obj[key] &gt;max){
+        max= obj[key];
+    }
+ }
+ var ary=[];
+ for (var key in obj){
+    if(obj[key] == max){
+        ary.push(key);
+    }
 }
-fn(); //这样执行打印的是window
-var obj={
-    name:&apos;mengqian&apos;,
-    fn:fn
-};
-obj.fn();//这样执行打印的是obj
+console.log(ary);
+</code></pre><p>####辨别浏览器型号</p>
+<pre><code> ;(function () {
+var reg9 = /(MSIE)|(rv)/;
+var reg7 =/Chrome/;
+var a = window.navigator.appVersion;
+if(reg9.test(a)){
+    var reg8 =/\d+\.\d+/g;
+    reg8.lastIndex = reg9.exec(a).index;
+    var b = reg8.exec(a);
+    var str =&quot;&quot;;
+    str += &quot;IE浏览器&quot; + b;
+    console.log(str);
+}else{
+    if(reg7.test(a)){
+        str = &quot;谷歌浏览器&quot;;
+        console.log(str);
+    }
+}
+}) ();
 </code></pre>
       
 
@@ -265,7 +367,7 @@ obj.fn();//这样执行打印的是obj
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/riji/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2016/09/20/RegExp/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -277,6 +379,25 @@ obj.fn();//这样执行打印的是obj
 </article>
 
   
+<nav id="article-nav">
+  
+    <a href="/2016/10/07/event/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Event
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/09/jquery/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">jQuery 基础</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 
 
@@ -284,7 +405,7 @@ obj.fn();//这样执行打印的是obj
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="undefined" data-title="随笔" data-url="http://yoursite.com/riji/index.html"></div>
+	<div class="ds-thread" data-thread-key="RegExp" data-title="RegExp" data-url="http://yoursite.com/2016/09/20/RegExp/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -330,7 +451,7 @@ obj.fn();//这样执行打印的是obj
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

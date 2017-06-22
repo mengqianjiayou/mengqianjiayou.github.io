@@ -6,18 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>随笔 | 孟倩博客</title>
+  <title>JavaScript中的继承方法 | 孟倩博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="####this用法：  1、绑定事件中的this就是绑定的元素=》事件绑定给谁this就是谁。(全局作用域中的this指的是window)。2、函数执行的时候，函数中的this就是调用这个函数的宿主。’.’前面是谁，这个函数的this就是谁。ps：只要有函数包含this，那么this就一定发生了改变。ps：只有函数在执行的那一刻才能确定函数中的this     例如下面：fn()和obj.fn(">
-<meta property="og:type" content="website">
-<meta property="og:title" content="随笔">
-<meta property="og:url" content="http://yoursite.com/riji/index.html">
+  <meta name="description" content="####继承  类式继承是在子类型构造函数的内部调用超类型的构造函数。  function C(){     this.x=100,     this.y=200 } C.prototype.getX=function(){       console.log(&amp;quot;x&amp;quot;) } function D(){     C.call(this); //把C中的this改成D的实例； }">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript中的继承方法">
+<meta property="og:url" content="http://yoursite.com/2016/11/23/JavaScript中的继承方法/index.html">
 <meta property="og:site_name" content="孟倩博客">
-<meta property="og:description" content="####this用法：  1、绑定事件中的this就是绑定的元素=》事件绑定给谁this就是谁。(全局作用域中的this指的是window)。2、函数执行的时候，函数中的this就是调用这个函数的宿主。’.’前面是谁，这个函数的this就是谁。ps：只要有函数包含this，那么this就一定发生了改变。ps：只有函数在执行的那一刻才能确定函数中的this     例如下面：fn()和obj.fn(">
-<meta property="og:updated_time" content="2017-06-19T12:29:05.237Z">
+<meta property="og:description" content="####继承  类式继承是在子类型构造函数的内部调用超类型的构造函数。  function C(){     this.x=100,     this.y=200 } C.prototype.getX=function(){       console.log(&amp;quot;x&amp;quot;) } function D(){     C.call(this); //把C中的this改成D的实例； }">
+<meta property="og:updated_time" content="2017-06-22T01:30:23.298Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="随笔">
-<meta name="twitter:description" content="####this用法：  1、绑定事件中的this就是绑定的元素=》事件绑定给谁this就是谁。(全局作用域中的this指的是window)。2、函数执行的时候，函数中的this就是调用这个函数的宿主。’.’前面是谁，这个函数的this就是谁。ps：只要有函数包含this，那么this就一定发生了改变。ps：只有函数在执行的那一刻才能确定函数中的this     例如下面：fn()和obj.fn(">
+<meta name="twitter:title" content="JavaScript中的继承方法">
+<meta name="twitter:description" content="####继承  类式继承是在子类型构造函数的内部调用超类型的构造函数。  function C(){     this.x=100,     this.y=200 } C.prototype.getX=function(){       console.log(&amp;quot;x&amp;quot;) } function D(){     C.call(this); //把C中的this改成D的实例； }">
   
     <link rel="alternative" href="/atom.xml" title="孟倩博客" type="application/atom+xml">
   
@@ -153,40 +153,111 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-undefined" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-JavaScript中的继承方法" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      随笔
+      JavaScript中的继承方法
     </h1>
   
 
         
-        <a href="/riji/index.html" class="archive-article-date">
-  	<time datetime="2017-06-19T06:07:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-19</time>
+        <a href="/2016/11/23/JavaScript中的继承方法/" class="archive-article-date">
+  	<time datetime="2016-11-23T12:04:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>####this用法：</p>
+        <p>####继承</p>
 <blockquote>
-<p>1、绑定事件中的this就是绑定的元素=》事件绑定给谁this就是谁。(全局作用域中的this指的是window)。<br>2、函数执行的时候，函数中的this就是调用这个函数的宿主。’.’前面是谁，这个函数的this就是谁。<br><strong>ps：</strong>只要有函数包含this，那么this就一定发生了改变。<br><strong>ps：</strong>只有函数在执行的那一刻才能确定函数中的this     例如下面：fn()和obj.fn()。<br><strong>ps：</strong>fn()和obj.fn()执行的是同一个函数，由于执行方式不同导致this不同。<br>3、自执行函数中的this指的是window。(非严格模式下)<br>4、定时器函数中的this一般是window。<br>5、构造函数中的this是实例。<br>6、call和apply和bind都可以强制修改this。<br>7、回调函数中的this一般也是window。</p>
+<p>类式继承是在子类型构造函数的内部调用超类型的构造函数。</p>
 </blockquote>
-<pre><code> function fn(){
-    console.log(this);
+<pre><code>function C(){
+    this.x=100,
+    this.y=200
 }
-fn(); //这样执行打印的是window
-var obj={
-    name:&apos;mengqian&apos;,
-    fn:fn
+C.prototype.getX=function(){  
+    console.log(&quot;x&quot;)
+}
+function D(){
+    C.call(this); //把C中的this改成D的实例；
+}
+var d= new D();
+console.dir(d) //打印x =100; y = 200;
+</code></pre>  <a id="more"></a>
+<blockquote>
+<p>原型链继承</p>
+</blockquote>
+<pre><code>function Parent(){
+    this.name = &apos;mike&apos;;
+}
+
+function Child(){
+    this.age = 12;
+}
+Child.prototype = new Parent();//Child继承Parent，通过原型，形成链条
+
+var test = new Child();
+alert(test.age);
+alert(test.name);//得到被继承的属性
+//继续原型链继承
+function Brother(){   //brother构造
+    this.weight = 60;
+}
+Brother.prototype = new Child();//继续原型链继承
+var brother = new Brother();
+alert(brother.name);//继承了Parent和Child,弹出mike
+alert(brother.age);//弹出12
+</code></pre><blockquote>
+<p>组合式继承</p>
+</blockquote>
+<pre><code>function Parent(age){
+    this.name = [&apos;mike&apos;,&apos;jack&apos;,&apos;smith&apos;];
+    this.age = age;
+}
+Parent.prototype.run = function () {
+    return this.name  + &apos; is&apos; + this.age;
 };
-obj.fn();//这样执行打印的是obj
-</code></pre>
+function Child(age){
+    Parent.call(this,age);//对象冒充，给超类型传参
+}
+Child.prototype = new Parent();//原型链继承
+var test = new Child(21);//写new Parent(21)也行
+alert(test.run());//mike,jack,smith is 21
+</code></pre><blockquote>
+<p>原型式继承</p>
+</blockquote>
+<pre><code> function obj(o){
+     function F(){}
+     F.prototype = o;
+     return new F();
+ }
+var box = {
+    name : &apos;trigkit4&apos;,
+    arr : [&apos;brother&apos;,&apos;sister&apos;,&apos;baba&apos;]
+};
+var b1 = obj(box);
+alert(b1.name);//trigkit4
+
+b1.name = &apos;mike&apos;;
+alert(b1.name);//mike
+
+alert(b1.arr);//brother,sister,baba
+b1.arr.push(&apos;parents&apos;);
+alert(b1.arr);//brother,sister,baba,parents
+
+var b2 = obj(box);
+alert(b2.name);//trigkit4
+alert(b2.arr);//brother,sister,baba,parents
+</code></pre><blockquote>
+<p>call和apply,通过call和apply改变this指向</p>
+</blockquote>
+
       
 
       
@@ -265,7 +336,7 @@ obj.fn();//这样执行打印的是obj
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/riji/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2016/11/23/JavaScript中的继承方法/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -277,6 +348,25 @@ obj.fn();//这样执行打印的是obj
 </article>
 
   
+<nav id="article-nav">
+  
+    <a href="/2017/01/03/闭包/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          闭包
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/07/event/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Event</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 
 
@@ -284,7 +374,7 @@ obj.fn();//这样执行打印的是obj
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="undefined" data-title="随笔" data-url="http://yoursite.com/riji/index.html"></div>
+	<div class="ds-thread" data-thread-key="JavaScript中的继承方法" data-title="JavaScript中的继承方法" data-url="http://yoursite.com/2016/11/23/JavaScript中的继承方法/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -330,7 +420,7 @@ obj.fn();//这样执行打印的是obj
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
